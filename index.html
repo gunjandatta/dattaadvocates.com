@@ -1,9 +1,379 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="refresh" content="0; url='https://dattaadvocate.com'" />
+  <meta charset="UTF-8" />
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fallback meta refresh (in case JS is disabled) -->
+  <meta http-equiv="refresh" content="3;url=https://dattaadvocate.com" />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #020617;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
+      --border-subtle: rgba(148, 163, 184, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 520px;
+    }
+
+    .card {
+      position: relative;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      padding: 28px 26px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(129, 140, 248, 0.16), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.25);
+    }
+
+    .pill-label-strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      max-width: 32rem;
+    }
+
+    .target {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .target-label {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 11px;
+    }
+
+    .target-url {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      opacity: 0.9;
+    }
+
+    .progress-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .progress-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-value {
+      font-size: 13px;
+      color: var(--text-main);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .progress-bar {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      overflow: hidden;
+      margin-bottom: 18px;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .progress-fill {
+      position: absolute;
+      inset: 0;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+      border-radius: inherit;
+      transition: width 0.2s ease-out;
+    }
+
+    .hint-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hint-row span strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .button-row {
+      margin-top: 18px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .button {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.95));
+      color: var(--text-main);
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out, background 0.12s ease-out;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.7);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.8);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.3), rgba(15, 23, 42, 0.98));
+    }
+
+    .button:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
+    }
+
+    .button-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .button-label {
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 22px 18px 18px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+      }
+
+      .hint-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .button-row {
+        justify-content: stretch;
+      }
+
+      .button {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    // Change this to your target URL
+    const TARGET_URL = "https://dattaadvocate.com";
+    const REDIRECT_DELAY_MS = 3000; // 3 seconds
+
+    let remaining = REDIRECT_DELAY_MS;
+    const step = 100; // ms
+
+    function updateProgress() {
+      const progressEl = document.querySelector(".progress-fill");
+      const valueEl = document.querySelector(".progress-value");
+
+      if (!progressEl || !valueEl) return;
+
+      const elapsed = REDIRECT_DELAY_MS - remaining;
+      const percent = Math.min(100, (elapsed / REDIRECT_DELAY_MS) * 100);
+      progressEl.style.width = percent + "%";
+
+      const secondsLeft = Math.ceil(remaining / 1000);
+      valueEl.textContent = secondsLeft + "s";
+    }
+
+    function tick() {
+      remaining -= step;
+      if (remaining <= 0) {
+        window.location.href = TARGET_URL;
+        return;
+      }
+      updateProgress();
+      setTimeout(tick, step);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Set URL text
+      const urlEl = document.querySelector(".target-url");
+      if (urlEl) {
+        urlEl.textContent = TARGET_URL;
+      }
+
+      // Wire up manual button
+      const button = document.querySelector(".button");
+      if (button) {
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.location.href = TARGET_URL;
+        });
+      }
+
+      // Initialize progress
+      updateProgress();
+      setTimeout(tick, step);
+    });
+  </script>
 </head>
 <body>
-<p>Redirecting you to Datta Advocate</p>
+  <main class="shell">
+    <section class="card">
+      <div class="card-inner">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span class="pill-label-strong">Redirecting</span>
+          <span>Secure handoff in progress</span>
+        </div>
+
+        <h1>Taking you to your next stop.</h1>
+        <p class="subtitle">
+          You’re being redirected to a different site. This should only take a moment—if it doesn’t, you can jump ahead manually.
+        </p>
+
+        <div class="target" title="Destination URL">
+          <span class="target-label">Destination</span>
+          <span class="target-url"></span>
+        </div>
+
+        <div class="progress-row">
+          <span class="progress-label">Redirecting in</span>
+          <span class="progress-value">3s</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+
+        <div class="hint-row">
+          <span>Not redirected? Use the button below.</span>
+          <span><strong>Tip:</strong> You can bookmark the next page once you arrive.</span>
+        </div>
+
+        <div class="button-row">
+          <a href="https://example.com" class="button">
+            <span class="button-icon">↗</span>
+            <span class="button-label">Go now</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
